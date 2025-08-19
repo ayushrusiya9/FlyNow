@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flynow - Airline Ticket Booking Website</title>
+    <link rel="shortcut icon" href="./assets/images/benefit-2.png" type="image/x-icon">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- SWIPER.JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- sweat alert -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- aos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body onload="updateNavbar()">
+    <header class="navbar">
+        <img src="assets/images/logo.png" alt="FlyNow Logo" class="logo" data-aos="fade-down" data-aos-easing="linear"
+            data-aos-duration="500">
+        <nav>
+            <ul id="nav-links">
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="600"><a href="index.html">Home</a>
+                </li>
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="700"><a
+                        href="flight_listing.html">Flight Listing</a></li>
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="800"><a
+                        href="flight_booking.html">Flight Booking</a></li>
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="900"><a href="my_booking.html">My
+                        Booking</a></li>
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000"><a href="about.html">About Us</a></li>
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1200"><a href="contect.html">Contact Us</a>
+                </li>
+
+                <li><a onclick="showLogin()" class="login-nav">Login</a></li>
+                <li><a onclick="showSignup()" class="login-nav1">Signup</a></li>
+                <li><a onclick="logOutUser()" id="Logout-nav">Logout</a></li>
+
+            </ul>
+        </nav>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="login">
+                <a onclick="logOutUser()" id="Logout" style="display: none;" data-aos="fade-down"
+                    data-aos-easing="linear" data-aos-duration="1300"></a>
+                <a onclick="showLogin()" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1300"
+                    class="after">Login</a>
+                <span class="after1" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1400">/</span>
+                <a onclick="showSignup()" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500"
+                    class="after2">Signup</a>
+            </div>
+            <svg onclick="showNavbar()" class="three-dots" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                <path
+                    d="M320 208C289.1 208 264 182.9 264 152C264 121.1 289.1 96 320 96C350.9 96 376 121.1 376 152C376 182.9 350.9 208 320 208zM320 432C350.9 432 376 457.1 376 488C376 518.9 350.9 544 320 544C289.1 544 264 518.9 264 488C264 457.1 289.1 432 320 432zM376 320C376 350.9 350.9 376 320 376C289.1 376 264 350.9 264 320C264 289.1 289.1 264 320 264C350.9 264 376 289.1 376 320z" />
+            </svg>
+        </div>
+    </header>
+    <!-- login and sign up -->
+    <section class="auth" id="auth">
+        <div class="login-page">
+            <span class="close" onclick="closeAuth()">&times;</span>
+            <h1>Log in</h1>
+            <input type="email" placeholder="Enter Your Email" id="login-email">
+            <p id="error-login" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <input type="password" placeholder="Enter Your Password" id="login-password">
+            <p id="error-login1" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <button class="login-btn" onclick="return loginForm()">Login</button>
+            <p>Don't have an account? <span onclick="showSignup()">Signup</span></p>
+        </div>
+
+        <div class="signup-page">
+            <span class="close" onclick="closeAuth()">&times;</span>
+            <h1>Sign Up</h1>
+            <input type="text" placeholder="Full Name" id="name">
+            <p id="error-name" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <input type="email" placeholder="Enter Your Email" id="email">
+            <p id="error-email" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <input type="number" placeholder="Enter Number" id="number">
+            <p id="error-num" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <input type="password" placeholder="Enter Password" id="password">
+            <p id="error-pass" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <input type="password" placeholder="Enter Confirm Password" id="confirm-password">
+            <p id="error-cpass" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <button class="signup-btn" onclick="return signUpform()">Signup</button>
+            <p>Already have an account? <span onclick="showLogin()">Login</span></p>
+        </div>
+    </section>
+
+    <!-- first section -->
+    <section class="hero-section">
+        <!-- Left Side Content -->
+        <div class="content" data-aos="fade-right" data-aos-duration="1300">
+            <h1 class="user-info" style="height: 80px;"></h1>
+            <div>
+                <h1><span>Book</span> Your Dream <span>Flights</span> Now!</h1>
+                <p>Discover the best deals on flights to your favorite destinations.Compare prices, book easily, and
+                    travel
+                    with confidence Your dream journey starts here.</p>
+                <button class="book-btn" onclick="openBookPage()">Book Now</button>
+            </div>
+        </div>
+        <!-- Plane Image -->
+        <img src="assets/images/plane.png" alt="Plane" data-aos="fade-up-left" data-aos-duration="1300" class="plane">
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section-home">
+        <div class="booking-section" >
+            <div class="tabs">
+                <button class="tab active"><i class="fa fa-plane"></i>Flights</button>
+            </div>
+
+            <form class="booking-form">
+                <div class="trip-type">
+                    <label><input type="radio" name="trip" value="one-way" checked> One way</label>
+                    <label><input type="radio" name="trip" value="round-trip"> Round-trip</label>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" placeholder="From (Select City)" style="border: none;">
+                    <input type="text" placeholder="To (Select City)">
+                    <label>&nbsp; Departure <br>
+                        <input type="date" value="2025-08-10">
+                    </label>
+                    <label id="returnDateLabel"> &nbsp; Return <br>
+                        <input type="date" id="returnDate" value="2025-08-10">
+                    </label>
+                    <input type="text" placeholder="Passengers">
+                </div>
+
+                <div class="class-type">
+                    <h3>Class</h3>
+                    <label><input type="radio" name="class" checked>Economy</label>
+                    <label><input type="radio" name="class">Business</label>
+                </div>
+
+                <div class="promo">
+                    <input type="text" placeholder="Enter Promo Code">
+                    <button class="show-flight" onclick="showFlight()"><a href="flight_listing.html" style="text-decoration: none; color: white;">Show Flight</a> <i class="fa fa-plane"></i></button>
+                </div>
+            </form>
+        </div>
+        <div class="banefit">
+            <div class="banefit-container" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom"
+                data-aos-duration="600">
+                <div class="banefit-img">
+                    <img src="assets/images/benefit-1.png" alt="">
+                </div>
+                <div class="banefit-text">
+                    <h4>We Are Now Available</h4>
+                    <p>Call +1 555 666 888 contact with us</p>
+                </div>
+            </div>
+            <div class="banefit-container" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom"
+                data-aos-duration="800">
+                <div class="banefit-img">
+                    <img src="assets/images/benefit-2.png" alt="">
+                </div>
+                <div class="banefit-text">
+                    <h4>International Flight</h4>
+                    <p>Call +1 555 666 888 contact with us</p>
+                </div>
+            </div>
+            <div class="banefit-container" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom"
+                data-aos-duration="1000">
+                <div class="banefit-img">
+                    <img src="assets/images/benefit-3.png" alt="">
+                </div>
+                <div class="banefit-text">
+                    <h4>Check Refund</h4>
+                    <p>Call +1 555 666 888 contact with us</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="flight-deals" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+            <div id="slider-btn">
+                <h3>Latest Flight Deals</h3>
+                <div class="slider-nav">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+
+            <!-- Swiper -->
+            <div class="swiper">
+                <div class="swiper-wrapper">
+
+                    <!-- Card 1 -->
+                    <div class="swiper-slide">
+                        <div class="flight-deal-card">
+                            <img src="assets/images/flight-1.png" alt="">
+                            <h3>Dubai To Dhaka</h3>
+                            <h4>14 Aug, 2025 - 20 Aug, 2025</h4>
+                            <div class="flight-text-btn">
+                                <div>
+                                    <h3>Economy Class</h3>
+                                    <h5>Rs. 12000 -/</h5>
+                                </div>
+                                <button>Book</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="swiper-slide">
+                        <div class="flight-deal-card">
+                            <img src="assets/images/flight-2.png" alt="">
+                            <h3>Dubai To Thailand</h3>
+                            <h4>14 Aug, 2025 - 21 Aug, 2025</h4>
+                            <div class="flight-text-btn">
+                                <div>
+                                    <h3>Premium Class</h3>
+                                    <h5>Rs. 15000 -/</h5>
+                                </div>
+                                <button>Book</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="swiper-slide">
+                        <div class="flight-deal-card">
+                            <img src="assets/images/flight-3.png" alt="">
+                            <h3>Dubai To Dhaka</h3>
+                            <h4>14 Aug, 2025 - 20 Aug, 2025</h4>
+                            <div class="flight-text-btn">
+                                <div>
+                                    <h3>Economy Class</h3>
+                                    <h5>Rs. 12000 -/</h5>
+                                </div>
+                                <button>Book</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="swiper-slide">
+                        <div class="flight-deal-card">
+                            <img src="assets/images/flight-4.png" alt="">
+                            <h3>Dubai To Dhaka</h3>
+                            <h4>14 Aug, 2025 - 20 Aug, 2025</h4>
+                            <div class="flight-text-btn">
+                                <div>
+                                    <h3>Premium Class</h3>
+                                    <h5>Rs. 15000 -/</h5>
+                                </div>
+                                <button>Book</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- flynow paris, dubai -->
+    <section class="flynow-hero">
+        <div class="flynow-container">
+
+            <!-- Left Section -->
+            <div class="flynow-left" data-aos="fade-right" data-aos-duration="600">
+                <img src="assets/images/logo.png" alt="FlyNow Logo" class="flynow-logo">
+                <h1>
+                    <span>TRAVEL</span>
+                    <span>ALL</span>
+                    <span>OVER</span>
+                    <span class="blue-text">The</span>
+                    <span class="blue-text">WORLD</span>
+                </h1>
+                <a href="flight_booking.html" class="flynow-btn">Booking Now</a>
+            </div>
+
+            <!-- Right Section -->
+            <div class="flynow-right">
+
+                <!-- Destination Cards -->
+                <div class="destination-card" data-aos="fade-up" data-aos-duration="700">
+                    <div class="card-image">
+                        <img src="assets/images/paris.png" alt="Paris">
+                    </div>
+                </div>
+
+                <div class="destination-card" data-aos="fade-up" data-aos-duration="900">
+                    <div class="card-image">
+                        <img src="assets/images/dubai.png" alt="Dubai">
+                    </div>
+                </div>
+
+                <div class="destination-card" data-aos="fade-up" data-aos-duration="1100">
+                    <div class="card-image">
+                        <img src="assets/images/italy.png" alt="Italy">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- achivment -->
+        <div class="achievement-card" data-aos="fade-up" data-aos-duration="500">
+
+            <!-- Left Content -->
+            <div class="achievement-left">
+                <p class="tagline">Achievement</p>
+                <h2>Your Destination Awaits, Book Now</h2>
+                <p class="desc">
+                    Discover the world’s most beautiful places with comfort and ease.Book your dream journey today and
+                    make memories for lifetime From exotic beaches to bustling cities, your adventure starts here.
+                </p>
+
+                <!-- Stats -->
+                <div class="stats">
+                    <div class="stat-box">
+                        <img src="assets/images/user.png" alt="Happy Customers">
+                        <div>
+                            <h3>12870 +</h3>
+                            <p>Happy Customers</p>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <img src="assets/images/user-2.png" alt="Client Satisfied">
+                        <div>
+                            <h3>100 %</h3>
+                            <p>Client Satisfied</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="contact-row">
+                    <span>Let's Connect Reach Out for More Information</span>
+                    <a href="contact.html" class="contact-btn">Contact us</a>
+                </div>
+            </div>
+
+            <!-- Right Image -->
+            <div class="achievement-right">
+                <img src="assets/images/achievement-image.png" alt="Achievement Image">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer" data-aos="fade-up" data-aos-duration="1000">
+        <div class="footer-container">
+
+            <!-- Logo + About -->
+            <div class="footer-section about">
+                <img src="assets/images/logo.png" alt="FlyNow Logo" class="footer-logo">
+                <p>FlyNow is your trusted travel partner, offering fast, secure, and affordable flight booking services.
+                    From domestic trips to international adventures, we help you find the best deals and make your
+                    journey smooth and memorable.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="flight_listing.html">Flight Listing</a></li>
+                    <li><a href="flight_booking.html">Flight booking</a></li>
+                    <li><a href="my_booking.html">My Booking</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contect.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section contact">
+                <h4>Contact Us</h4>
+                <p>Email: support@flynow.com</p>
+                <p>Phone: +91 9876543210</p>
+                <p>Address: Bhopal, Madhya Pradesh, India</p>
+            </div>
+
+        </div>
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+            <p>© 2025 FlyNow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- SWIPER.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://unpkg.com/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- Main script -->
+    <script src="js/script.js"></script>
+
+
+</body>
+
+</html>

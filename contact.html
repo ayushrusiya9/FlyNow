@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flynow - Contect Us</title>
+    <link rel="shortcut icon" href="./assets/images/benefit-2.png" type="image/x-icon">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- SWIPER.JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- aos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/flight_listing.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <!-- nav -->
+    <header class="navbar">
+        <img src="assets/images/logo.png" alt="FlyNow Logo" class="logo" data-aos="fade-down" data-aos-easing="linear"
+            data-aos-duration="500">
+        <nav>
+            <ul id="nav-links">
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="600"><a href="index.html">Home</a>
+                </li>
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="700"><a
+                        href="flight_listing.html">Flight Listing</a></li>
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="800"><a
+                        href="flight_booking.html">Flight Booking</a></li>
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="900"><a href="my_booking.html">My
+                        Booking</a></li>
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000"><a href="about.html">About
+                        Us</a></li>
+                <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1200"><a
+                        href="contect.html">Contact Us</a>
+                </li>
+
+                <li><a onclick="showLogin()" class="login-nav">Login</a></li>
+                <li><a onclick="showSignup()" class="login-nav1">Signup</a></li>
+                <li><a onclick="logOutUser()" id="Logout-nav">Logout</a></li>
+
+            </ul>
+        </nav>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="login">
+                <a onclick="logOutUser()" id="Logout" style="display: none;" data-aos="fade-down"
+                    data-aos-easing="linear" data-aos-duration="1300"></a>
+                <a onclick="showLogin()" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1300"
+                    class="after">Login</a>
+                <span class="after1" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1400">/</span>
+                <a onclick="showSignup()" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500"
+                    class="after2">Signup</a>
+            </div>
+            <svg onclick="showNavbar()" class="three-dots" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                <path
+                    d="M320 208C289.1 208 264 182.9 264 152C264 121.1 289.1 96 320 96C350.9 96 376 121.1 376 152C376 182.9 350.9 208 320 208zM320 432C350.9 432 376 457.1 376 488C376 518.9 350.9 544 320 544C289.1 544 264 518.9 264 488C264 457.1 289.1 432 320 432zM376 320C376 350.9 350.9 376 320 376C289.1 376 264 350.9 264 320C264 289.1 289.1 264 320 264C350.9 264 376 289.1 376 320z" />
+            </svg>
+        </div>
+    </header>
+    <!-- login signup -->
+    <!-- login and sign up -->
+    <section class="auth" id="auth">
+        <div class="login-page">
+            <span class="close" onclick="closeAuth()">&times;</span>
+            <h1>Log in</h1>
+            <input type="email" placeholder="Enter Your Email" id="login-email">
+            <p id="error-login" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <input type="password" placeholder="Enter Your Password" id="login-password">
+            <p id="error-login1" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <button class="login-btn" onclick="return loginForm()">Login</button>
+            <p>Don't have an account? <span onclick="showSignup()">Signup</span></p>
+        </div>
+
+        <div class="signup-page">
+            <span class="close" onclick="closeAuth()">&times;</span>
+            <h1>Sign Up</h1>
+            <input type="text" placeholder="Full Name" id="name">
+            <p id="error-name" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <input type="email" placeholder="Enter Your Email" id="email">
+            <p id="error-email" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <input type="number" placeholder="Enter Number" id="number">
+            <p id="error-num" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <input type="password" placeholder="Enter Password" id="password">
+            <p id="error-pass" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <input type="password" placeholder="Enter Confirm Password" id="confirm-password">
+            <p id="error-cpass" style="color:red; font-size: 11px; margin-top: -2px;"></p>
+            <button class="signup-btn" onclick="return signUpform()">Signup</button>
+            <p>Already have an account? <span onclick="showLogin()">Login</span></p>
+        </div>
+    </section>
+
+    <!-- first booking -->
+    <section class="flight-booking-hero" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="600">
+        <img src="assets/images/vacation.png" alt="vacation-img" height="250px">
+        <h1> Contect Us</h1>
+        <img src="assets/images/plane.png" alt="plane-img" height="130px" width="auth">
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="600">
+        <div class="contact-container">
+
+            <!-- Left: Info -->
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>Have questions? Reach out to us anytime. We are available 24/7 to help you.</p>
+                <ul>
+                    <li><strong>Email:</strong> support@flynow.com</li>
+                    <li><strong>Phone:</strong> +91 9876543210</li>
+                    <li><strong>Address:</strong> Bhopal, Madhya Pradesh, India</li>
+                </ul>
+            </div>
+
+            <!-- Right: Form -->
+            <div class="contact-form">
+                <h2>Send a Message</h2>
+                <form>
+                    <input type="text" placeholder="Your Name" required />
+                    <input type="email" placeholder="Your Email" required />
+                    <input type="text" placeholder="Subject" required />
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- footer -->
+    <footer class="footer" data-aos="fade-up" data-aos-duration="1000">
+        <div class="footer-container">
+
+            <!-- Logo + About -->
+            <div class="footer-section about">
+                <img src="assets/images/logo.png" alt="FlyNow Logo" class="footer-logo">
+                <p>FlyNow is your trusted travel partner, offering fast, secure, and affordable flight booking services.
+                    From domestic trips to international adventures, we help you find the best deals and make your
+                    journey smooth and memorable.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="flight_listing.html">Flight Listing</a></li>
+                    <li><a href="flight_booking.html">Flight booking</a></li>
+                    <li><a href="my_booking.html">My Booking</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contect.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section contact">
+                <h4>Contact Us</h4>
+                <p>Email: support@flynow.com</p>
+                <p>Phone: +91 9876543210</p>
+                <p>Address: Bhopal, Madhya Pradesh, India</p>
+            </div>
+
+        </div>
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+            <p>© 2025 FlyNow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

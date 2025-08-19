@@ -1,0 +1,17 @@
+{
+  "Ticket": [
+    {
+      "id": "060c",
+      "Full_Name": "Ayush Rusiya",
+      "Gender": "male",
+      "Email": "ayushrusiya386@gmail.com",
+      "Contact": "9876511221",
+      "Nationality": "indian",
+      "Flight_no": "boing 777 22",
+      "From": "Bhopal",
+      "To": "Indore",
+      "Date": "2025-08-19",
+      "Price": "2000"
+    }
+  ]
+}
