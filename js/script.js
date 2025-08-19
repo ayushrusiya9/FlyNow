@@ -194,7 +194,7 @@ let updateNavbar = () => {
         document.querySelector(".after2").style.display = "none";
         document.querySelector("#Logout").innerText = `Logout`;
 
-        document.querySelector(".user-info").innerHTML = `Welcome, <span style="color: #5271ff;">${loggedInUser.name}!</span>`
+        document.querySelector(".user-info").innerHTML = `Welcome, <span style="color: #0B8CD3;">${loggedInUser.name}!</span>`
     } else {
         document.querySelector("#Logout").style.display = "none";
         document.querySelector(".after").style.display = "block";
