@@ -102,7 +102,7 @@ let signUpform = () => {
         errorCpass.style.visibility = "hidden";
     }
 
-    if (!(password.match(/[@#$%&]/) && password.match(/[0-9]/) && password.match(/[a-z]/) && password.match(/[A-Z]/))) {
+    if (!(password.match(/[@#$%&]/) && password.match(/[0-9]/) && password.match(/[a-z]/))) {
         errorCpass.innerText = "please enter strong password!";
         errorCpass.style.visibility = "visible";
         return false;
@@ -315,46 +315,6 @@ let bookTicket = () => {
     return false; // form submit roko
 };
 
-
-
-// // sabse pehle element ko select karo
-// let returnDate = document.getElementById("return-date");
-
-// // One way button
-// document.querySelector('input[value="one-way"]').onclick = () => {
-//     returnDate.style.display = "none";
-// };
-
-// // Round trip button
-// document.querySelector('input[value="round-trip"]').onclick = () => {
-//     returnDate.style.display = "inline-block";
-// };
-
-// // Page load pe by default one-way ka return hide
-// returnDate.style.display = "none";
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     let returnDate = document.getElementById("returnDateLabel");
-//     let oneWayBtn = document.querySelector('input[value="one-way"]');
-//     let roundTripBtn = document.querySelector('input[value="round-trip"]');
-
-//     if (oneWayBtn && roundTripBtn && returnDate) {
-//         // One way button
-//         oneWayBtn.onclick = () => {
-//             returnDate.style.display = "none";
-//         };
-
-//         // Round trip button
-//         roundTripBtn.onclick = () => {
-//             returnDate.style.display = "inline-block";
-//         };
-
-//         // Page load pe default one-way hide
-//         returnDate.style.display = "none";
-//     } else {
-//         console.error(" One of the elements not found in DOM");
-//     }
-// });
 
 
 let showTicket = async () => {
