@@ -25,22 +25,6 @@ It provides an easy-to-use interface for **flight search, booking, and managing 
   - [FontAwesome] – Icons   
 
 ---
-
-## 📂 Project Structure
-Flynow/
-├── index.html # Homepage (flight search/listing)
-├── about.html # About page
-├── contact.html # Contact page with form
-├── service.html # Services section
-├── join.html # Join Us page with form
-├── my-booking.html # My Bookings page
-├── css/ # Stylesheets
-├── js/ # JavaScript logic
-├── images/ # Assets (icons, backgrounds, etc.)
-└── README.md
-
----
-
 ## 📸 Screenshots
 
 ###  Homepage
